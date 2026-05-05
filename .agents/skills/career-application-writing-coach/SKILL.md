@@ -1,21 +1,13 @@
 ---
 name: career-application-writing-coach
 description: Part of the Writing Bot suite. Coach career and application writing: resume, CV, cover letter, statement of purpose, personal statement, interview answer, professional bio, and achievement narratives. Use for fit mapping, STARS stories, action verbs, quantified impact, and authenticity checks. Do not use for academic manuscript prose, routine emails, or citation review.
-display_name: "Writing Bot — Career Application Writing Coach"
-version: "1.0.0"
-official_suite_name: "Writing Bot"
-created_by: "Beopsoo Kim (김법수)"
-affiliation: "Department of Electrical and Computer Engineering, Inha University / 인하대학교 전기컴퓨터공학과"
-license: "CC BY-NC-SA 4.0"
-language_specialization: "Korean and English"
 ---
 
 ## Provenance and license
 
 Official suite name: **Writing Bot**.  
-Created by: **Beopsoo Kim (김법수), Department of Electrical and Computer Engineering, Inha University / 김법수, 인하대학교 전기컴퓨터공학과**.  
+Created by: **Beopsoo Kim, Department of Electrical and Computer Engineering, Inha University**.  
 License: **CC BY-NC-SA 4.0**.
-
 
 ## Korean-English specialization policy
 
@@ -28,22 +20,21 @@ Language detection and response:
 - If the user asks for translation, distinguish literal translation, polished translation, and genre-adapted rewriting.
 
 Korean writing rules:
-- Prefer clear, precise, professional Korean over inflated 한자어 or vague academic filler.
-- Reduce 번역투, excessive nominalization, repeated “것”, and unnecessary passive constructions.
+- Prefer clear, precise, professional Korean over inflated rhetoric or vague academic filler.
+- Reduce translationese, excessive nominalization, repeated connectors, and unnecessary passive constructions.
 - For Korean academic prose, keep claims scoped and evidence-linked; avoid emotional overstatement.
 - For Korean professional email, use concise honorifics, explicit requests, and clear action items.
 
 English writing rules:
 - Prefer plain, field-appropriate English over decorative vocabulary.
 - Use topic sentences, active verbs where appropriate, parallel bullet structure, and claim-evidence-analysis logic.
-- Watch for Korean-to-English interference: missing subjects, overlong noun strings, weak transitions, article/preposition errors, and overuse of “this study” without a concrete verb.
+- Watch for Korean-to-English interference: missing subjects, overlong noun strings, weak transitions, article/preposition errors, and overuse of "this study" without a concrete verb.
 - For academic English, preserve hedging, scope, method/result distinction, and citation boundaries.
 
 Bilingual terminology handling:
-- For technical terms, provide Korean explanation with English term in parentheses on first use when useful.
+- For technical terms, provide Korean explanation with the English term in parentheses on first use when useful.
 - Do not over-translate established academic or engineering terms if the English term is standard in the field.
-- When revising bilingual text, preserve the author’s intended technical meaning before improving style.
-
+- When revising bilingual text, preserve the author's intended technical meaning before improving style.
 
 ## Core operating kernel
 

@@ -2,7 +2,7 @@
 
 Official suite name: **Writing Bot**  
 Master invocation: `$writing-bot`  
-Created by: **Beopsoo Kim (김법수), Department of Electrical and Computer Engineering, Inha University / 김법수, 인하대학교 전기컴퓨터공학과**  
+Created by: **Beopsoo Kim, Department of Electrical and Computer Engineering, Inha University**  
 License: **CC BY-NC-SA 4.0**
 
 ## Required bilingual smoke tests
@@ -11,7 +11,7 @@ License: **CC BY-NC-SA 4.0**
 
 ```text
 $writing-bot
-한국어로 설명해줘. 지금 어떤 Skill을 써야 할지 모르겠다.
+한국어로 설명해줘. 지금 어떤 Skill을 써야 할지 모르겠어.
 ```
 
 Expected: responds in Korean, identifies the proper specialized skill, and provides a ready-to-copy next prompt.
@@ -36,7 +36,7 @@ Expected: Korean diagnosis with English artifact suggestions.
 
 ---
 
-# Eval Prompts for Split Writing Skills
+# Eval prompts for split writing skills
 
 Use these prompts to test implicit and explicit skill selection.
 
