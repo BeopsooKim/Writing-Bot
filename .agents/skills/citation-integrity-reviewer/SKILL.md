@@ -135,12 +135,82 @@ Refuse and redirect when the user asks to:
 - Paraphrase: must change structure and wording while preserving meaning and citing the source.
 - Summary: compresses broader source content in the user's own structure and cites the source.
 
+## Three-layer citation audit
+
+When reviewing a manuscript, separate these questions explicitly:
+
+1. **Existence**
+   - Does the citation appear to be a real source with plausible metadata?
+   - If browsing/search is available and the claim matters, verify exact metadata instead of trusting formatting.
+2. **Support**
+   - Even if the citation is real, does it support the exact statement being made?
+   - Distinguish `direct support`, `partial/adjacent support`, `background only`, and `unsupported by the cited source`.
+3. **Proximity**
+   - Is the source close enough to the manuscript's domain to justify positioning?
+   - Distinguish `direct domain precedent`, `adjacent methodological analogy`, `generic background`, and `field-distance too large for the claim`.
+
+Never collapse these three layers into a single yes/no citation judgment.
+
+## Verification status protocol
+
+Tag every source or citation-sensitive claim as exactly one of:
+
+- `verified`: exact metadata or source content was checked directly
+- `manuscript-only`: judgment is based only on the manuscript text or user-supplied citation string
+- `unverifiable`: the source cannot currently be checked with confidence
+
+Never upgrade `manuscript-only` to `verified` based on plausibility alone.
+
+For every source-use judgment, also state a `Safe claim boundary`:
+- what the user may say now
+- what must wait for verification or a closer source
+
+## Source burden decision rule
+
+- If the claim is about the user's own runtime, accuracy, robustness, feasibility, or experimental outcome, the burden is on manuscript evidence, not on citations.
+- If the claim is about field positioning, novelty, or precedent, the burden is on the closest domain literature, not on generic background sources.
+- If the claim is generic background only, a weaker or broader citation may be acceptable, but say so explicitly.
+
+## Search escalation ladder
+
+- Level 0 `manuscript-first`: diagnose source risk from the manuscript alone. This is the default.
+- Level 1 `metadata verify`: check exact source existence only when the user asks for accuracy or when a citation may be fake or malformed.
+- Level 2 `support/proximity verify`: check whether a real source actually supports the claim and is close enough in domain.
+- Level 3 `optional expansion`: broaden the search for closer analogues only when the user explicitly asks for more sources or stronger positioning support.
+
+Do not jump to Level 3 when Level 0 or Level 1 already answers the user's actual question.
+
+## Korean evidence-line compression protocol
+
+When responding in Korean about sources, keep the reasoning in Korean and compress each source into this 3-line block:
+
+- `Judgment:`
+- `Evidence title:`
+- `Why it matters:`
+
+Keep titles, venues, and DOIs on one compact evidence line. Do not dump long bibliography prose unless the user explicitly asks for it.
+
+## Escalation rules
+
+- If a manuscript uses a generic algorithm paper to justify a domain-specific novelty claim, say so explicitly and request closer domain analogues.
+- If a manuscript uses a citation to support a runtime, accuracy, robustness, or feasibility claim that actually depends on the current paper's own experiment, do not let the citation substitute for internal evidence.
+- If web/search tools are unavailable, clearly label citation-existence and citation-support findings as manuscript-only judgments rather than verified facts.
+- When operating in Korean, keep the diagnosis in Korean first and place English titles, venues, and DOIs as evidence lines rather than letting the answer collapse into untranslated bibliography text.
+
 ## Output formats
 
 For source-use review:
 
 ```text
 Integrity verdict:
+Verification status:
+- Claim/source:
+  - Status: verified / manuscript-only / unverifiable
+  - Support judgment:
+  - Proximity judgment:
+  - Safe claim boundary:
+  - Evidence title:
+  - Why it matters:
 Citation-needed claims:
 1. Text/claim:
    Reason citation is needed:

@@ -116,6 +116,61 @@ Rules:
 - Use text reduction: phrase fragments, not paragraphs.
 - Preserve caveats and limitations for technical claims.
 
+## Claim-preservation protocol
+
+Before converting a manuscript into slides or a poster, classify each major source claim as:
+
+- `directly evidenced`
+- `partially evidenced`
+- `interpretive`
+- `speculative / future work`
+
+Then apply these rules:
+- Slide titles may state strong claims only when the manuscript directly evidences them.
+- If the source manuscript overclaims, do not export the overclaim into the presentation artifact unchanged.
+- If the benchmark is an oracle, upper bound, or idealized comparator, the slide must say so.
+- If runtime, robustness, or generalization is not rigorously established, use bounded wording in the slide title and speaker note.
+
+## Bounded claim lexicon
+
+Default replacements for over-strong exported claims:
+
+- `robust` -> `more stable under the tested conditions`
+- `real-time feasible` -> `computationally promising on the tested hardware`
+- `outperforms` -> `recovers X% of the oracle value under the evaluated setup`
+- `general` -> `supported in the present case study`
+- `practical` -> `potentially relevant for the tested operating setup`
+
+## Export safety pass
+
+Before finalizing any storyboard, slide title list, or poster thesis:
+
+1. Classify each exported claim as `directly evidenced`, `partially evidenced`, `interpretive`, or `speculative`.
+2. If the claim is `partially evidenced` or weaker, rewrite the title or takeaway using the bounded claim lexicon.
+3. If the claim depends on an oracle or upper bound, say so in the title or speaker note.
+4. Add a one-line `Claim risk:` note for each slide or poster section that carries a technical claim.
+
+## KO/EN native micro-examples
+
+- KO example:
+  - unsafe title: `실시간 robust 운전 달성`
+  - safer title: `Jeju 실험 조건에서 oracle 대비 89.2% 수익을 회복한 receding-horizon scheduling`
+- EN example:
+  - unsafe title: `Real-Time Robust VPP Operation`
+  - safer title: `Receding-Horizon VPP Scheduling Evaluated in the Tested Jeju Setup`
+
+## Power-systems presentation branch
+
+For power-systems, optimization, VPP, MCTS, MPC, OPF, market-operation, or uncertainty-aware scheduling manuscripts, default to this narrative order unless the user gives a stronger one:
+
+1. Operational problem and why static planning breaks
+2. Decision loop or control architecture
+3. Comparator caveat: practical baseline vs oracle upper bound
+4. Key quantitative result with units and scope
+5. Limitation that prevents overclaim
+
+Do not let a visual summary erase the difference between a case-study result and a general field claim.
+
 ## Poster logic
 
 Default research poster flow:
@@ -136,6 +191,7 @@ Narrative arc:
 Slide-by-slide storyboard:
 1. Title:
    Main message:
+   Claim risk:
    Visual:
    Speaker note:
 2. ...
@@ -149,6 +205,7 @@ For slide revision:
 Slide diagnosis:
 Current problem:
 Revised slide title:
+Claim risk:
 Keep:
 Cut:
 Convert to visual:

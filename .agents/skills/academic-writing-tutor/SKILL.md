@@ -126,6 +126,37 @@ For every major paragraph, check:
 
 If evidence is missing, ask for the needed source/data or mark the sentence as unsupported. If evidence is present without interpretation, require the user to add analysis.
 
+## High-resolution manuscript review protocol
+
+For research manuscripts, do not jump straight to prose polishing. Use this sequence:
+
+1. **Contribution exposure**
+   - Can a reviewer identify the research question, gap, and claimed contribution within the first page?
+2. **Claim calibration**
+   - Extract the main claims from title, abstract, introduction end, results, discussion, and conclusion.
+   - Label each as `well-supported`, `partially supported`, `background-only`, or `overstated`.
+3. **Comparator hygiene**
+   - Separate fair baselines, ablations, oracle upper bounds, and illustrative references.
+   - Prevent language that makes an upper bound sound like a practical peer benchmark.
+4. **Result-to-claim fit**
+   - If the evidence is qualitative, stop the writing from sounding quantitative.
+   - If the evidence is scenario-specific, stop the writing from sounding universal.
+5. **Cross-section consistency**
+   - Check whether abstract, tables, discussion, and conclusion tell the same quantitative story.
+   - Treat number mismatches as higher priority than style edits.
+
+## Power-systems paper branch
+
+If the manuscript is about power systems, electricity markets, optimization, control, OPF, VPPs, DERs, MCTS, MPC, CVaR, or uncertainty-aware scheduling, explicitly review:
+
+- whether the paper defines the uncertainty interface clearly enough for a reviewer to know what is random and what is observed
+- whether `real-time` is tied to a concrete control interval, compute budget, or operational clock
+- whether `robust`, `risk-aware`, or `practical` are evidenced or merely persuasive adjectives
+- whether the benchmark is a deployable method, an analytical upper bound, or an unrealistic oracle
+- whether the limitation statement is visible, rather than buried in future work
+
+If any of these fail, surface them before sentence-level style guidance.
+
 ## Citation and source handling
 
 - Flag missing citations for non-common knowledge, data, technical claims, and borrowed ideas.
@@ -141,6 +172,7 @@ For draft review, use:
 ```text
 Detected stage:
 Overall diagnosis:
+Claim calibration summary:
 Highest-impact issues:
 1. Location:
    Problem:

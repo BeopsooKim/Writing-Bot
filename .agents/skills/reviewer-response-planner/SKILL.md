@@ -116,6 +116,78 @@ For each comment, classify:
 - Do not promise changes that were not made.
 - Do not invent experiments, results, citations, or reviewer intent.
 
+## Claim-bounding response rule
+
+If a reviewer comment targets an over-strong claim, apply this decision rule:
+
+1. If the evidence already exists in the manuscript, point to the exact section/table/figure and narrow the wording if needed.
+2. If the evidence does not exist but the user plans a real new experiment, mark that as a future manuscript change only if the user has explicitly provided it.
+3. If the evidence does not exist and no new experiment is available, do not defend the strong claim as-is. Convert the revision plan to claim-bounding language.
+
+Examples of safe claim-bounding moves:
+- `robust` -> `more stable under the tested conditions`
+- `real-time feasible` -> `computationally promising on the tested hardware`
+- `outperforms` -> `approaches the oracle upper bound under the evaluated setup`
+- `general` -> `supported in the present case study`
+- `practical` -> `potentially relevant for the tested operating setup`
+
+## Anchor map protocol
+
+When mapping reviewer comments to manuscript changes, use the smallest stable anchor you can infer:
+
+- `title`
+- `abstract opening`
+- `abstract result sentence`
+- `abstract closing sentence`
+- `intro opening`
+- `intro ending`
+- `methods uncertainty paragraph`
+- `results paragraph`
+- `table caption / table value line`
+- `discussion runtime sentence`
+- `conclusion opening`
+
+Do not hide behind generic labels such as `Introduction` or `Discussion` when a narrower anchor is available.
+
+## Blocking-flaw to edit-site bridge
+
+- For each major reviewer comment, map it to at least one manuscript anchor and one minimum manuscript edit.
+- If the comment attacks a headline claim, force the plan to touch `title`, `abstract closing sentence`, or `conclusion opening` when those claims are affected.
+- If the comment attacks a numeric inconsistency, force the plan to touch both `results paragraph` and `table value line`.
+
+## Export safety pass
+
+Before finalizing the response plan, classify the defended claim as one of:
+
+- `directly evidenced`
+- `partially evidenced`
+- `interpretive`
+- `speculative`
+
+If the claim is `partially evidenced` or weaker and no real new experiment is available, convert the plan from defense language to claim-bounding language.
+
+## KO/EN native micro-examples
+
+- KO example:
+  - unsafe: `우리 방법은 deep uncertainty에서도 robust합니다.`
+  - safer: `우리 방법은 본 실험 조건에서 forecast mismatch에 대해 더 안정적인 수익 패턴을 보였습니다.`
+- EN example:
+  - unsafe: `Our method outperforms the baseline in real time.`
+  - safer: `Our method recovers a high fraction of the oracle value under the evaluated setup.`
+
+## High-risk reviewer comment patterns
+
+Treat these as blocking or major until resolved:
+
+- unclear uncertainty model
+- unfair comparator or oracle baseline framing
+- missing runtime or latency evidence
+- unsupported robustness or generalization claim
+- text/table/figure numeric mismatch
+- missing acknowledgement of a known practical limitation
+
+For these comments, prefer exact manuscript edits and bounded language over rhetorical defense.
+
 ## Point-by-point matrix
 
 Default columns:
@@ -135,8 +207,9 @@ For feedback planning:
 ```text
 Overall strategy:
 Response matrix:
-| ID | Comment summary | Type | Severity | Stance | Revision action | Evidence needed | Response direction |
-|---|---|---|---|---|---|---|---|
+| ID | Comment summary | Type | Severity | Stance | Manuscript anchor | Revision action | Evidence needed | Response direction |
+|---|---|---|---|---|---|---|---|---|
+Bounded-claim edits required:
 Next edits to make first:
 Tone risks:
 ```

@@ -109,6 +109,72 @@ Review in this order:
 8. Style: remove clutter, pompous phrasing, clichés, and passive voice when unhelpful.
 9. Grammar/mechanics: fix only after higher-order issues are identified.
 
+## High-stakes manuscript audit
+
+When the draft is a research paper, thesis chapter, technical report, or reviewer-facing manuscript, run this audit before ordinary style editing:
+
+1. **Claim inventory**
+   - Extract the strongest claims from the title, abstract, introduction ending, results, discussion, conclusion, figure captions, and table summaries.
+   - Mark each claim as `supported by direct result`, `supported only indirectly`, `citation-supported background`, or `unsupported / overstated`.
+2. **High-risk claim words**
+   - Always inspect words such as `robust`, `real-time`, `feasible`, `optimal`, `state-of-the-art`, `theoretical maximum`, `risk-aware`, `significant`, `general`, `practical`, and `scalable`.
+   - If the manuscript uses any of these without a visible validation standard, treat that as a priority issue before grammar.
+3. **Number-consistency check**
+   - Compare every headline number across abstract, main text, tables, and figures.
+   - Any mismatch in revenue, accuracy, runtime, sample size, horizon length, confidence level, or risk metric is a blocking issue.
+4. **Evidence chain check**
+   - For each major claim, ask where the evidence is, whether it is internal experiment or cited background, and whether it supports the exact scope of the wording.
+5. **Comparator framing**
+   - Distinguish practical baselines, literature baselines, oracle baselines, and upper bounds.
+   - If the text compares against an oracle/perfect-foresight baseline, prevent language that implies fair head-to-head competitiveness.
+
+## Power-systems and optimization manuscript branch
+
+If the manuscript concerns power systems, market operation, optimization, MCTS, MPC, OPF, VPP, DER coordination, or uncertainty-aware scheduling, explicitly check:
+
+- what uncertainty is actually modeled: forecast replay, scenario generation, stochastic process, or vague narrative only
+- whether receding-horizon or online claims are matched by a real decision-interval latency discussion
+- whether risk metrics such as CVaR, worst-day average, reserve margin, or violation counts are defined precisely
+- whether the baseline is physically deployable, analytically idealized, or merely an upper bound
+- whether claimed robustness could instead be explained by a conservative revenue buffer, penalty design, or omitted market/service dimensions
+
+Treat these as higher priority than wording polish.
+
+## Anchor map protocol
+
+When the user provides manuscript text but not line numbers, anchor findings to the smallest stable location you can infer:
+
+- `title`
+- `abstract opening`
+- `abstract result sentence`
+- `abstract closing sentence`
+- `intro opening`
+- `intro ending`
+- `methods uncertainty paragraph`
+- `results paragraph`
+- `table caption / table value line`
+- `discussion runtime sentence`
+- `conclusion opening`
+
+Use section names only if none of these anchors can be inferred honestly.
+
+## Locality-before-generality rule
+
+- Diagnose the issue at the smallest stable anchor before describing the broader section problem.
+- Top issues must use this order: `Issue -> Anchor -> Why it matters -> Minimum safe fix`.
+- Do not fabricate line numbers. If exact lines are unavailable, use the anchor label only.
+
+## Blocking-flaw to edit-site bridge
+
+If you find a blocking flaw such as a numeric mismatch, over-strong headline claim, or unfair comparator framing, state the first impacted anchors immediately. Prefer:
+
+- `title`
+- `abstract closing sentence`
+- `results paragraph`
+- `table value line`
+- `discussion runtime sentence`
+- `conclusion opening`
+
 ## Conditional checks
 
 - Missing evidence: ask for concrete data, source, example, or experience.
@@ -120,6 +186,10 @@ Review in this order:
 - Hasty generalization: qualify claims or request broader evidence.
 - Non sequitur: identify the missing bridge between premise and conclusion.
 - Extraordinary claim: require strong evidence or soften the claim.
+- Strong claim with weak metric definition: require a validation criterion or downgrade the wording.
+- Text/table mismatch: treat as a blocking factual issue and surface it before stylistic advice.
+- Oracle baseline treated as a peer baseline: force relabeling to `upper bound`, `idealized comparator`, or equivalent scoped wording.
+- Runtime/feasibility claim without timing evidence: mark as unsupported unless the manuscript provides wall-clock or deployment-relevant timing evidence.
 
 ## Rewrite policy
 
@@ -135,11 +205,13 @@ For detailed review:
 ```text
 Detected stage:
 Priority verdict:
+Blocking factual mismatches:
+Claim audit:
 Top issues:
 1. Issue:
-   Location:
+   Anchor:
    Why it matters:
-   Fix:
+   Minimum safe fix:
 2. ...
 Suggested revision:
 Explanation of changes:
